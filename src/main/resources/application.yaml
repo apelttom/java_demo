@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: SARA v2 application
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    username: ${DATASOURCE_USERNAME:sa}
+#    password: ${DATASOURCE_PASSWORD:difficult_password}
+#    driverClassName: org.h2.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    show-sql: false
+#    open-in-view: false
+#    hibernate:
+#      ddl-auto: validate
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-ui
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: always
+#  liquibase:
+#    enabled: true
+#    change-log: db/migrations/db.changelog.yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: ${SERVER_PORT:8090}
+
+logging:
+  mask: true
+  pattern:
+    console: '%clr(%d{yy-MM-dd HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{0}){blue} %clr(:){blue} %clr(%X{requestId}){faint} %clr(%m){faint}%n'
+  level:
+    root: WARN
+    cz.kpmg.java.app.sample: DEBUG
+#    org.hibernate: WARN
+#    org.liquibase: DEBUG
+    org.springframework.web: INFO
+custom:
+  prop: ${CUSTOM_PROPERTY:default property}
+

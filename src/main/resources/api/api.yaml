@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: SARA application for IT risk analysis
+  description: |-
+    Application for IT risk analysis:
+    - get assets
+  version: 1.0-SNAPSHOT
+tags:
+  - name: assets
+    description: Operations with assets
+paths:
+  /assets:
+    get:
+      tags:
+        - assets
+      summary: Get list of assets
+      description: Will provide you with a list of assets
+      operationId: getAssetsList
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetsList'
+        400:
+          description: Bad input
+components:
+  schemas:
+    Asset:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+    AssetsList:
+      type: array
+      items:
+        $ref: "#/components/schemas/Asset"
